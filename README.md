@@ -1,3 +1,23 @@
+# Subiendo al repositorio Hoy 27/08/2025
+
+Integrantes:
+
+Kenner Herrera Torres.
+Luigy Ocoso Sinisterra.
+Daniel Rivas Segura.
+
+# React native con expo
+Ecosistema y conjunto de herramientas que simplifica el desarrollo de app multiplataforma con React Native. Ofrece un SDK (Software Development Kit) con APIs para funciones nativas (como acceso a cámara o notificaciones), una herramienta de línea de comandos (Expo CLI) para administrar el proyecto y la aplicación Expo Go para previsualizar la aplicación en dispositivos físicos sin procesos de compilación nativos.
+
+# Límites
+1. Rendimiento en cargas de trabajo muy intensivas
+
+2. Dependencia de módulos nativos.
+
+3. Tamaño de la aplicación.
+
+4. Actualizaciones del sistema operativo.
+
 # Welcome to your Expo app 👋
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
