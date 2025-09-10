@@ -1,68 +1,109 @@
-import { Image } from 'expo-image';
-import { StyleSheet } from 'react-native';
-
-import { ExternalLink } from '@/components/ExternalLink';
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
+import React from 'react';
+import { SafeAreaView, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 export default function HomeScreen() {
+  const router = useRouter();
+
+  // Función para navegar a la pantalla de exploración
+  const handleViewLiveRoute = () => {
+    console.log('Navegando a la ruta en vivo');
+    router.push('/(tabs)/explore');
+  };
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#e4e723ff', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/imagen.jpg')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">HELLO WORLD </ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle"></ThemedText>
-        <ThemedText>
-          <ThemedText type="defaultSemiBold">Bienvenidos a GOlazo</ThemedText>
-        </ThemedText>
-        <ThemedText>¿Aburrido de las noticias de fútbol que parecen un testamento? <ThemedText type="defaultSemiBold">Con GOLazo, </ThemedText> 
-          tendrás el resumen que de verdad importa: chismes, jugadas épicas y memes para compartir. </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="defaultSemiBold">¡Lucho, Luchito, LUCHAZO!</ThemedText>
-        <ThemedText>¡ATENCIÓN! Se busca a la defensa argentina que Luis Díaz <ThemedText type="defaultSemiBold">se llevó en el bolsillo. </ThemedText>  
-          El Guajiro hizo un golazo que pasará a la historia, dejando a los <ThemedText type="defaultSemiBold">"che boludos" </ThemedText>preguntándose 
-          en qué momento los pasó el camión. El fútbol está en su mejor momento pibe.</ThemedText>
-        <ExternalLink href="https://youtu.be/mPx7cRNOWa0?si=DryM78rgUxmTr97U">
-                  <ThemedText type="link">¡MiraloOOO!</ThemedText>
-        </ExternalLink>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle"></ThemedText>
-        <ThemedText>
-         ¡No te pierdas ni un solo gol, y que las risas nunca falten!
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    // SafeAreaView asegura que el contenido no invada la barra de estado
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView contentContainerStyle={styles.scrollContent}>
+        {/* Encabezado de bienvenida con espacio adecuado */}
+        <View style={styles.header}>
+          <ThemedText type="title" style={styles.titleText}>¡Hola! Te damos la bienvenida</ThemedText>
+          <ThemedText style={styles.subtitleText}>
+            Mira la ubicación del camión de basura en tiempo real.
+          </ThemedText>
+        </View>
+
+        {/* Tarjeta principal para ver el mapa */}
+        <ThemedView style={styles.mainCard}>
+          <Ionicons name="map-outline" size={60} color="#007AFF" style={styles.icon} />
+          <ThemedText type="subtitle" style={styles.cardTitle}>Mapa</ThemedText>
+          <ThemedText style={styles.cardText}>
+            Sigue la ruta del camión de basura y conoce su ubicación exacta.
+          </ThemedText>
+          <TouchableOpacity style={styles.liveButton} onPress={handleViewLiveRoute}>
+            <ThemedText style={styles.liveButtonText}>
+              Ver la ruta en vivo <Ionicons name="arrow-forward" size={16} color="#fff" />
+            </ThemedText>
+          </TouchableOpacity>
+        </ThemedView>
+
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
+  safeArea: {
+    flex: 1,
+  },
+  scrollContent: {
+    padding: 40,
+    // Elimina el paddingTop para que SafeAreaView lo maneje
+  },
+  header: {
+    marginBottom: 40,
+  },
+  titleText: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 5,
+  },
+  subtitleText: {
+    fontSize: 16,
+    color: '#888',
+    textAlign: 'center',
+  },
+  mainCard: {
+    padding: 25,
+    borderRadius: 20,
+    backgroundColor: '#fff',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    elevation: 6,
     alignItems: 'center',
-    gap: 8,
+    textAlign: 'center',
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  icon: {
+    marginBottom: 15,
   },
-  reactLogo: {
-    height: 215,
-    width: 394,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  cardTitle: {
+    fontSize: 22,
+    fontWeight: '600',
+    marginBottom: 10,
+  },
+  cardText: {
+    fontSize: 16,
+    color: '#666',
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+  liveButton: {
+    backgroundColor: '#007AFF',
+    borderRadius: 10,
+    paddingVertical: 14,
+    paddingHorizontal: 25,
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  liveButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });

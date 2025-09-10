@@ -9,12 +9,22 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "config": {
+        "googleMaps": {
+            "apiKey": "AIzaSyCqVQzuVUbELF4XetnH344Vnup0oWilKHw"
+        }
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#ffffff",
+        "config": {
+        "googleMaps": {
+            "apiKey": "AIzaSyCqVQzuVUbELF4XetnH344Vnup0oWilKHw"
+        }
+      }
       },
       "edgeToEdgeEnabled": true,
       "package": "com.smerling.cursoseminario"
