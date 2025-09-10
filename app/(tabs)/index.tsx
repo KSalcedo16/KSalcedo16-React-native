@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     padding: 40,
-    // Elimina el paddingTop para que SafeAreaView lo maneje
+   
   },
   header: {
     marginBottom: 40,

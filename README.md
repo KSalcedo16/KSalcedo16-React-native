@@ -1,4 +1,7 @@
-# Subiendo al repositorio Hoy 27/08/2025
+# Se creó la carpeta evidencias
+Esta contiene las imagenes donde se muestra la app en emulador de android.
+
+# Subiendo al repositorio
 
 Integrantes:
 
