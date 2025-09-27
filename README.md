@@ -68,7 +68,7 @@ Los comandos esenciales que he ejecutado para la gestión del código han sido:
 
 git init: Inicializar el repositorio local.
 
-git switch -c <nombre_rama>: Crear una nueva rama y cambiar a ella.
+git branch actualizaciones y git checkout actualizaciones: Crear una nueva rama y cambiar a ella.
 
 git add .: Agregar todos los archivos al área de preparación.
 
