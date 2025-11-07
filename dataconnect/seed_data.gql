@@ -1,0 +1,118 @@
+mutation SeedDatabase @transaction @auth(level: USER, insecureReason: "This mutation is designed to populate the database with initial data and does not require specific user authorization.") {
+  category_insertMany(data: [
+    {
+      id: "64782a61-7b7a-4c79-87a0-08b49919e5c8",
+      name: "Restaurants",
+      description: "Places to eat"
+    },
+    {
+      id: "4c324a1e-2d4a-4b6a-9c2a-2b4d6c9e8f1a",
+      name: "Hotels",
+      description: "Places to stay"
+    }
+  ])
+  user_insertMany(data: [
+    {
+      id: "2a7b44a2-8e4d-4a21-a72f-0b556d9b7d4b",
+      username: "johndoe",
+      email: "john.doe@example.com",
+      createdAt: "2024-04-29T12:00:00Z",
+      displayName: "John Doe",
+      bio: "A simple user",
+      location: "Some Location",
+      profilePictureUrl: "http://example.com/john.jpg"
+    },
+    {
+      id: "b1d6e2a9-7f3e-4b2e-8c9a-0a9b8d7c6e5f",
+      username: "janedoe",
+      email: "jane.doe@example.com",
+      createdAt: "2024-04-29T13:00:00Z",
+      displayName: "Jane Doe",
+      bio: "Another user",
+      location: "Another Location",
+      profilePictureUrl: "http://example.com/jane.jpg"
+    }
+  ])
+  place_insertMany(data: [
+    {
+      id: "9c8b9a7d-6f5e-4a8d-9b8a-8d6c5b4a3e2a",
+      name: "Example Restaurant",
+      description: "A great place to eat",
+      address: "123 Main St",
+      latitude: 34.052235,
+      longitude: -118.243683,
+      categoryId: "64782a61-7b7a-4c79-87a0-08b49919e5c8",
+      createdAt: "2024-04-29T14:00:00Z",
+      averageRating: 4.5,
+      openingHours: "9am-5pm",
+      phone: "555-1234",
+      website: "http://example.com/restaurant"
+    },
+    {
+      id: "5e9d8c7b-4a3e-4f2d-9b1a-0a8d7c6e5d4c",
+      name: "Example Hotel",
+      description: "A comfortable place to stay",
+      address: "456 Elm St",
+      latitude: 34.052235,
+      longitude: -118.243683,
+      categoryId: "4c324a1e-2d4a-4b6a-9c2a-2b4d6c9e8f1a",
+      createdAt: "2024-04-29T15:00:00Z",
+      averageRating: 4.0,
+      openingHours: "24/7",
+      phone: "555-5678",
+      website: "http://example.com/hotel"
+    }
+  ])
+  review_insertMany(data: [
+    {
+      id: "f2a7d8c9-5a4b-4c2e-9a8d-8e7c6b5a4d3e",
+      userId: "2a7b44a2-8e4d-4a21-a72f-0b556d9b7d4b",
+      placeId: "9c8b9a7d-6f5e-4a8d-9b8a-8d6c5b4a3e2a",
+      createdAt: "2024-04-29T16:00:00Z",
+      rating: 5,
+      reviewText: "Excellent food and service!",
+      photoUrls: ["http://example.com/review1.jpg"]
+    },
+    {
+      id: "c8b9a7d6-4e5f-4a8d-9b8a-8d6c5b4a3e2b",
+      userId: "b1d6e2a9-7f3e-4b2e-8c9a-0a9b8d7c6e5f",
+      placeId: "5e9d8c7b-4a3e-4f2d-9b1a-0a8d7c6e5d4c",
+      createdAt: "2024-04-29T17:00:00Z",
+      rating: 4,
+      reviewText: "Comfortable stay",
+      photoUrls: ["http://example.com/review2.jpg"]
+    }
+  ])
+  favorite_insertMany(data: [
+    {
+      userId: "2a7b44a2-8e4d-4a21-a72f-0b556d9b7d4b",
+      placeId: "9c8b9a7d-6f5e-4a8d-9b8a-8d6c5b4a3e2a",
+      favoritedAt: "2024-04-29T18:00:00Z"
+    },
+    {
+      userId: "b1d6e2a9-7f3e-4b2e-8c9a-0a9b8d7c6e5f",
+      placeId: "5e9d8c7b-4a3e-4f2d-9b1a-0a8d7c6e5d4c",
+      favoritedAt: "2024-04-29T19:00:00Z"
+    }
+  ])
+  photo_insertMany(data: [
+    {
+      id: "a4e8d9c7-6b5a-4d2e-8a9d-8e7c6b5a4d3c",
+      userId: "2a7b44a2-8e4d-4a21-a72f-0b556d9b7d4b",
+      placeId: "9c8b9a7d-6f5e-4a8d-9b8a-8d6c5b4a3e2a",
+      reviewId: "f2a7d8c9-5a4b-4c2e-9a8d-8e7c6b5a4d3e",
+      uploadedAt: "2024-04-29T20:00:00Z",
+      url: "http://example.com/photo1.jpg",
+      caption: "Delicious food"
+    },
+    {
+      id: "b5f9c0a8-7c6b-4e3d-9a8c-8d7b6c5a4d3d",
+      userId: "b1d6e2a9-7f3e-4b2e-8c9a-0a9b8d7c6e5f",
+      placeId: "5e9d8c7b-4a3e-4f2d-9b1a-0a8d7c6e5d4c",
+      reviewId: "c8b9a7d6-4e5f-4a8d-9b8a-8d6c5b4a3e2b",
+      uploadedAt: "2024-04-29T21:00:00Z",
+      url: "http://example.com/photo2.jpg",
+      caption: "Cozy room"
+    }
+  ])
+}

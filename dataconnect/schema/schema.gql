@@ -1,0 +1,52 @@
+type User @table {
+  username: String!
+  email: String!
+  createdAt: Timestamp!
+  displayName: String
+  bio: String
+  profilePictureUrl: String
+  location: String
+}
+
+type Category @table {
+  name: String!
+  description: String
+}
+
+type Place @table {
+  name: String!
+  latitude: Float!
+  longitude: Float!
+  category: Category!
+  createdAt: Timestamp!
+  address: String
+  description: String
+  phone: String
+  website: String
+  openingHours: String
+  averageRating: Float
+}
+
+type Review @table {
+  user: User!
+  place: Place!
+  rating: Int!
+  reviewText: String!
+  createdAt: Timestamp!
+  photoUrls: [String]
+}
+
+type Photo @table {
+  user: User!
+  place: Place!
+  review: Review
+  url: String!
+  uploadedAt: Timestamp!
+  caption: String
+}
+
+type Favorite @table(key: ["user", "place"]) {
+  user: User!
+  place: Place!
+  favoritedAt: Timestamp!
+}
